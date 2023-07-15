@@ -4,7 +4,6 @@ const btnSubmit = document.querySelector(".btn-submit");
 const ul = document.querySelector("#ul")
 let counter = 0;
 const date = new Date()
-var tog = false
 
 const createlist = function (e) {
   counter++
@@ -63,20 +62,23 @@ const remove = function(e){
     let li = e.target.parentElement.parentElement
     if(window.confirm("are you sure")){
       ul.removeChild(li)
+      counter--
     }
   }
   if(e.target.className.includes("check-box")){
-    if(!tog){
+    let tog = e.target
+    let p = e.target.parentElement.nextSibling.firstChild
+    if(tog.checked){
 
-      let p = e.target.parentElement.nextSibling.firstChild
       p.style.textDecoration="line-through"
       alert("congratulations on completing task")
-      tog=true
+      
+    
+
     }
     else{
-      let p = e.target.parentElement.nextSibling.firstChild
       p.style.textDecoration="none"
-      tog=false
+      
     }
   }
 }
